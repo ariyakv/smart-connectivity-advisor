@@ -1,5 +1,17 @@
 package com.example;
 
+/**
+ * Represents an internet or connectivity plan that can be recommended to a user.
+ *
+ * A Plan contains key attributes such as:
+ * - name: the name of the plan (e.g., "Basic Connect")
+ * - monthlyPrice: the cost per month in dollars
+ * - speedMbps: the internet speed in megabits per second
+ * - mobileBackupIncluded: whether the plan includes a mobile backup option
+ *
+ * This class is used by the AI recommendation system to compare plans
+ * and determine the best option for a user's needs.
+ */
 public class Plan {
     private String name;
     private int monthlyPrice;
