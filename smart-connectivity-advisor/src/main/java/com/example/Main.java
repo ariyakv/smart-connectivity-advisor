@@ -20,6 +20,7 @@ import javafx.scene.layout.ColumnConstraints;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Priority;
+//import javafx.scene.layout.Region;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
@@ -72,7 +73,7 @@ public class Main extends Application {
         Label statusPill = new Label("Ready to personalize");
         statusPill.getStyleClass().add("status-pill");
 
-        Label planValue = createValueLabel("Complete the profile to see your best-fit plan.");
+        Label planValue = createValueLabel("Complete the profile to see your best fit.");
         Label speedValue = createValueLabel("--");
         Label affordabilityValue = createValueLabel("--");
         Label reliabilityRiskValue = createValueLabel("--");
@@ -86,10 +87,6 @@ public class Main extends Application {
         Label summarySubheadline = new Label("Use the form to compare speed, price fit, and reliability guidance in one place.");
         summarySubheadline.getStyleClass().add("summary-subheadline");
         summarySubheadline.setWrapText(true);
-
-        Label summaryFootnote = new Label("Tip: affordability is better when the score is higher, and reliability risk is better when the score is lower.");
-        summaryFootnote.getStyleClass().add("summary-footnote");
-        summaryFootnote.setWrapText(true);
 
         TextArea explanationArea = new TextArea();
         explanationArea.setEditable(false);
@@ -186,21 +183,14 @@ public class Main extends Application {
 
         VBox tipsBox = new VBox(
                 10,
-                createTipRow("The recommendation tries to stay within budget before suggesting a more expensive plan."),
-                createTipRow("If no activities are selected, the app assumes light browsing needs."),
-                createTipRow("Mobile backup is suggested when uptime matters most or outages are happening.")
-        );
-
-        VBox quickStartBox = new VBox(
-                8,
-                createHintLabel("Start here"),
-                createIntroText("Enter your monthly budget, choose the activities your home depends on, and then click the button to see a recommendation.")
+                createTipRow("Budget-sensitive homes may still get a fallback plan recommendation."),
+                createTipRow("If nothing is checked under usage, the app assumes basic browsing."),
+                createTipRow("Mobile backup is suggested when uptime matters most.")
         );
 
         VBox inputContent = new VBox(
                 18,
                 createHeroCard(),
-                quickStartBox,
                 createCard("Household Snapshot", formGrid),
                 createCard("How You Use The Internet", usageBox),
                 createCard("Reliability & Pain Points", situationBox),
@@ -232,7 +222,7 @@ public class Main extends Application {
         metricsGrid.add(createMetricCard("Community Need", communityNeedValue), 0, 2);
         metricsGrid.add(createMetricCard("Mobile Backup", backupValue), 1, 2);
 
-        VBox summaryCard = new VBox(10, statusPill, summaryHeadline, summarySubheadline, summaryFootnote);
+        VBox summaryCard = new VBox(8, statusPill, summaryHeadline, summarySubheadline);
         summaryCard.getStyleClass().add("summary-card");
 
         VBox resultsPanel = new VBox(
@@ -422,13 +412,6 @@ public class Main extends Application {
         Label label = new Label(text);
         label.setWrapText(true);
         label.getStyleClass().add("hint-label");
-        return label;
-    }
-
-    private static Label createIntroText(String text) {
-        Label label = new Label(text);
-        label.setWrapText(true);
-        label.getStyleClass().add("intro-text");
         return label;
     }
 
